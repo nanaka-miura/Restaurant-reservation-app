@@ -1,0 +1,54 @@
+.login__content {
+    max-width: 1540px;
+}
+
+.form {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #818181;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.form__header {
+    background: #305DFF;
+    border-radius: 5px 5px 0 0;
+}
+
+.form__header--item {
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.form__input {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form__input--email,
+.form__input--password {
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 16px;
+    margin-left: 3px;
+    outline: none;
+    width: 80%;
+}
+
+.form__button {
+    margin: 0 auto;
+    margin-top: 25px;
+    text-align: right;
+    width: 85%;
+}
+
+.form__button--submit {
+    background: #305DFF;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 15px;
+    padding: 7px 15px;
+
+}
