@@ -14,4 +14,9 @@ class ShopController extends Controller
     {
         return view('reserve-completed');
     }
+
+    public function detail()
+    {
+        return view('shop-detail');
+    }
 }

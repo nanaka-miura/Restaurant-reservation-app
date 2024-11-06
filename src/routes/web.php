@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,6 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/done', [ShopController::class, 'done']);
+Route::get('/detail', [ShopController::class, 'detail']);
 Route::get('/thanks', [AuthController::class, 'thanks']);
+Route::get('/mypage', [UserController::class, 'mypage']);
