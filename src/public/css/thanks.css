@@ -1,0 +1,32 @@
+.thanks__content {
+    max-width: 1540px;
+}
+
+.thanks__message {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #818181;
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+}
+
+.thanks__message--item {
+    font-size: 20px;
+    padding-top: 90px;
+}
+
+.thanks__message--login-button {
+    padding-bottom: 90px;
+    padding-top: 30px;
+}
+
+.thanks__message--login-button--item {
+    background: #305DFF;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 10px;
+    text-decoration: none;
+}

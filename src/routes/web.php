@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShopCOntroller;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use App\Http\Controllers\ShopCOntroller;
 */
 
 Route::get('/', [ShopController::class, 'index']);
+Route::get('/done', [ShopController::class, 'done']);
+Route::get('/thanks', [AuthController::class, 'thanks']);

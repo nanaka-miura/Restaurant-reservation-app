@@ -10,4 +10,8 @@ class ShopController extends Controller
     {
         return view('shop-list');
     }
+    public function done()
+    {
+        return view('reserve-completed');
+    }
 }
