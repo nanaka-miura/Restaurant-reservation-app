@@ -1,3 +1,7 @@
+body {
+    background: #EEEEEE;
+}
+
 .header__inner {
     align-items: center;
     display: flex;
@@ -11,45 +15,45 @@
 }
 
 .drawer-open {
-    display: flex;
-    height: 55px;
-    width: 55px;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 100;
-    cursor: pointer;
-    background: blue;
+    background: #305dff;
     border-radius: 7px;
     box-shadow: 3px 3px 7px #6f6f6f;
+    cursor: pointer;
+    display: flex;
+    height: 55px;
+    justify-content: center;
+    position: relative;
+    width: 55px;
+    z-index: 100;
 }
 
 .menu-icon {
+    background: #fff;
     display: block;
     height: 0.5px;
-    width: 25px;
-    background: #fff;
     position: absolute;
+    width: 25px;
 }
 
 .menu-icon::before {
+    background: #fff;
+    bottom: 8px;
     content: '';
     display: block;
     height: 0.5px;
-    width: 10px;
-    background: #fff;
     position: absolute;
-    bottom: 8px;
+    width: 10px;
 }
 
 .menu-icon::after {
+    background: #fff;
     content: '';
     display: block;
     height: 0.5px;
-    width: 5px;
-    background: #fff;
     position: absolute;
     top: 8px;
+    width: 5px;
 }
 
 #drawer-input:checked ~ .drawer-open .menu-icon {
@@ -57,33 +61,33 @@
 }
 
 #drawer-input:checked ~ .drawer-open .menu-icon::before {
-    top: 0;
     height: 0.5px;
+    top: 0;
     transform: rotate(45deg);
     width: 25px;
 }
 
 #drawer-input:checked ~ .drawer-open .menu-icon::after {
-    top: 0;
     height: 0.5px;
+    top: 0;
     transform: rotate(-45deg);
     width: 25px;
 }
 
 .nav__content {
-    width: 100%;
+    background: #fff;
     height: 100%;
     position: fixed;
     top: 0;
     left: 100%;
+    width: 100%;
     z-index: 99;
-    background: #fff;
 }
 
 #drawer-input:checked ~ .nav__content {
-    top: 20%;
     left: 0%;
     text-align: center;
+    top: 0%;
 }
 
 #drawer-input:checked ~ .header__inner--logo {
@@ -95,19 +99,19 @@
 }
 
 .nav__item:first-child {
-    margin-top: 70px;
+    margin-top: 200px;
 }
 
 .nav__item--link {
-    text-decoration: none;
-    color: blue;
+    color: rgb(0, 106, 255);
     font-size: 30px;
+    text-decoration: none;
 }
 
 .header__inner--logo {
+    color: #305dff;
     font-size: 35px;
-    color: blue;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 20px;
     text-decoration: none;
 }
