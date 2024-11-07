@@ -9,98 +9,67 @@
 <div class="mypage-content">
     <div class="content__left">
         <h3 class="reservation__content--header">予約状況</h3>
+        @foreach($reservations as $reservation)
         <div class="reservation__detail">
             <div class="detail-title">
                 <i class="fa-solid fa-clock"></i>
-                <p>予約1</p>
+                <p>予約{{ $loop->iteration }}</p>
+                <form class="cancel-button__form" action="{{ url('/cancel/' . $reservation->id) }}" method="post">
+                    @csrf
+                    <button class="cancel-button" type="submit">×</button>
+                </form>
             </div>
             <div class="detail__group">
                 <p class="detail__header">Shop</p>
-                <p class="detail__item">仙人</p>
+                <p class="detail__item">{{ $reservation->shop->name }}</p>
             </div>
             <div class="detail__group">
                 <p class="detail__header">Date</p>
-                <p class="detail__item">2021-04-01</p>
+                <p class="detail__item">{{ $reservation->date->format('Y-m-d') }}</p>
             </div>
             <div class="detail__group">
                 <p class="detail__header">Time</p>
-                <p class="detail__item">17:00</p>
+                <p class="detail__item">{{ $reservation->time->format('H:i') }}</p>
             </div>
             <div class="detail__group">
                 <p class="detail__header">Number</p>
-                <p class="detail__item">1人</p>
+                <p class="detail__item">{{ $reservation->number }}</p>
             </div>
         </div>
+        @endforeach
     </div>
     <div class="content__right">
-        <h3 class="user__name">testさん</h3>
+        <h3 class="user__name">{{ $user->name }}さん</h3>
         <div class="likes__shop-list">
             <h3 class="likes__shop-list--header">お気に入り店舗</h3>
             <div class="likes__shop--group">
+                @foreach($likes as $like)
                 <div class="likes__shop--card">
                     <div class="shop-card__top">
-                        <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
+                        <img class="shop-card__img" src="{{ $like->shop->image }}" alt="">
                     </div>
                     <div class="shop-card__bottom">
-                        <h3 class="shop-card__title">仙人</h3>
+                        <h3 class="shop-card__title">{{ $like->shop->name }}</h3>
                         <div class="shop-card__tag">
-                            <p class="shop-card__tag--area">東京都</p>
-                            <p class="shop-card__tag--genre">寿司</p>
+                            <p class="shop-card__tag--area">{{ $like->shop->area }}</p>
+                            <p class="shop-card__tag--genre">{{ $like->shop->genre }}</p>
                         </div>
                         <div class="shop-card__item">
-                            <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                            <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                            <a href="{{ url('/detail/' . $like->shop_id) }}" class="shop-card__item--detail-button">詳しくみる</a>
+                            <form action="{{ url('/like/' . $like->shop->id) }}" method="post">
+                        @csrf
+                        <button class="button" type="submit">
+                        @if(in_array($like->shop->id, (array)$like))
+                            <i class="fa-solid fa-heart" style="color: #FF0000;"></i>
+                        @else
+                            <i class="fa-solid fa-heart" style="color: #EEEEEE;"></i>
+                        @endif
+                        </button>
+                    </form>
                         </div>
                     </div>
                 </div>
-                <div class="likes__shop--card">
-                    <div class="shop-card__top">
-                        <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-                    </div>
-                    <div class="shop-card__bottom">
-                        <h3 class="shop-card__title">仙人</h3>
-                        <div class="shop-card__tag">
-                            <p class="shop-card__tag--area">東京都</p>
-                            <p class="shop-card__tag--genre">寿司</p>
-                        </div>
-                        <div class="shop-card__item">
-                            <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                            <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="likes__shop--card">
-                    <div class="shop-card__top">
-                        <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-                    </div>
-                    <div class="shop-card__bottom">
-                        <h3 class="shop-card__title">仙人</h3>
-                        <div class="shop-card__tag">
-                            <p class="shop-card__tag--area">東京都</p>
-                            <p class="shop-card__tag--genre">寿司</p>
-                        </div>
-                        <div class="shop-card__item">
-                            <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                            <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="likes__shop--card">
-                    <div class="shop-card__top">
-                        <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-                    </div>
-                    <div class="shop-card__bottom">
-                        <h3 class="shop-card__title">仙人</h3>
-                        <div class="shop-card__tag">
-                            <p class="shop-card__tag--area">東京都</p>
-                            <p class="shop-card__tag--genre">寿司</p>
-                        </div>
-                        <div class="shop-card__item">
-                            <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                            <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -35,9 +35,13 @@
             </div>
             </header>
             <div class="shop-name">
-                <span class="previous"></span>
+                @if(isset($previous))
+                <a class="previous" href="{{ url('/detail/' .  $previous->id) }}"><</a>
+                @endif
                 <h3 class="shop-name__item">{{ $shop->name }}</h3>
-                <span class="next"></span>
+                @if(isset($next))
+                <a class="next" href="{{ url('/detail/' . $next->id) }}">></a>
+                @endif
             </div>
             <img class="shop__img" src="{{ $shop->image }}" alt="">
             <div class="shop__tag">

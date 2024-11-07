@@ -130,6 +130,27 @@ body {
     width: 50%;
 }
 
+.shop-name {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+.previous,
+.next {
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #a1a1a1;
+    color: #000;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    padding: 3px;
+    text-decoration: none;
+    width: 30px;
+}
+
 .shop__img {
     width: 100%;
 }

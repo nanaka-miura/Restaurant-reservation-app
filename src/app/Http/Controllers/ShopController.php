@@ -37,8 +37,10 @@ class ShopController extends Controller
     public function detail($id)
     {
         $shop = Shop::findOrFail($id);
+        $previous = Shop::where('id', '<', $shop->id)->orderBy('id', 'desc')->first();
+        $next = Shop::where('id', '>', $shop->id)->orderBy('id')->first();
 
-        return view('shop-detail', compact('shop'));
+        return view('shop-detail', compact('shop', 'previous', 'next'));
     }
 
     public function reservation(Request $request, $id)
@@ -52,5 +54,14 @@ class ShopController extends Controller
         $reservation->save();
 
         return redirect('/');
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        $reservation->delete();
+
+        return redirect('/mypage');
     }
 }

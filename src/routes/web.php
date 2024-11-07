@@ -21,4 +21,6 @@ Route::get('/detail/{id}', [ShopController::class, 'detail']);
 Route::middleware(['auth'])->group(function() {
     Route::post('/like/{id}', [ShopController::class, 'like']);
     Route::post('/detail/{id}', [ShopController::class, 'reservation']);
+    Route::post('/cancel/{id}', [ShopController::class, 'cancel']);
+    Route::get('/mypage', [UserController::class, 'mypage']);
 });
