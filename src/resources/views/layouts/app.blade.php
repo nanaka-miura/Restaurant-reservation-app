@@ -18,11 +18,14 @@
             <a class="header__inner--logo" href="/">Rese</a>
             <nav class="nav__content">
                 @if (Auth::check())
+                <form action="/logout" method="post">
+                @csrf
                 <ul class="nav__list">
                     <li class="nav__item"><a class="nav__item--link" href="/">Home</a></li>
-                    <li class="nav__item"><a class="nav__item--link" href="/logout">Logout</a></li>
+                    <button class="nav__item nav__item--link button" type="submit">Logout</button>
                     <li class="nav__item"><a class="nav__item--link" href="/mypage">Mypage</a></li>
                 </ul>
+                </form>
                 @else
                 <ul class="nav__list">
                     <li class="nav__item"><a class="nav__item--link" href="/">Home</a></li>

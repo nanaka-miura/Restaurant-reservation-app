@@ -99,7 +99,7 @@ body {
 }
 
 .nav__item:first-child {
-    margin-top: 200px;
+    margin-top: 200px ;
 }
 
 .nav__item--link {
@@ -114,4 +114,11 @@ body {
     font-weight: bold;
     margin-left: 20px;
     text-decoration: none;
+}
+
+.button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    font-weight: 100;
 }

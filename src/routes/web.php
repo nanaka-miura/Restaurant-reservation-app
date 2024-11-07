@@ -17,7 +17,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [ShopController::class, 'index']);
-Route::get('/done', [ShopController::class, 'done']);
-Route::get('/detail', [ShopController::class, 'detail']);
-Route::get('/thanks', [AuthController::class, 'thanks']);
-Route::get('/mypage', [UserController::class, 'mypage']);
+Route::get('/detail/{id}', [ShopController::class, 'detail']);
+Route::middleware(['auth'])->group(function() {
+    Route::post('/like/{id}', [ShopController::class, 'like']);
+    Route::post('/detail/{id}', [ShopController::class, 'reservation']);
+});

@@ -9,134 +9,33 @@
 @section('content')
 <div class="content">
     <div class="shop-card__group">
+        @foreach($shops as $shop)
         <div class="shop-card">
             <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
+                <img class="shop-card__img" src="{{ $shop->image }}" alt="">
             </div>
             <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
+                <h3 class="shop-card__title">{{ $shop->name }}</h3>
                 <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
+                    <p class="shop-card__tag--area">{{ $shop->area }}</p>
+                    <p class="shop-card__tag--genre">{{ $shop->genre }}</p>
                 </div>
                 <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                    <a href="{{ url('/detail/' . $shop->id) }}" class="shop-card__item--detail-button">詳しくみる</a>
+                    <form action="{{ url('/like/' . $shop->id) }}" method="post">
+                        @csrf
+                        <button class="button" type="submit">
+                        @if(in_array($shop->id, $like, true))
+                            <i class="fa-solid fa-heart" style="color: #FF0000;"></i>
+                        @else
+                            <i class="fa-solid fa-heart" style="color: #EEEEEE;"></i>
+                        @endif
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <div class="shop-card__top">
-                <img class="shop-card__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
-            </div>
-            <div class="shop-card__bottom">
-                <h3 class="shop-card__title">仙人</h3>
-                <div class="shop-card__tag">
-                    <p class="shop-card__tag--area">東京都</p>
-                    <p class="shop-card__tag--genre">寿司</p>
-                </div>
-                <div class="shop-card__item">
-                    <a href="/detail" class="shop-card__item--detail-button">詳しくみる</a>
-                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection

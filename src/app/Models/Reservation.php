@@ -29,6 +29,6 @@ class Reservation extends Model
 
     protected $casts = [
         'date' => 'date',
-        'time' => 'time',
+        'time' => 'datetime',
     ];
 }

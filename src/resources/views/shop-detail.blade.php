@@ -36,25 +36,26 @@
             </header>
             <div class="shop-name">
                 <span class="previous"></span>
-                <h3 class="shop-name__item">仙人</h3>
+                <h3 class="shop-name__item">{{ $shop->name }}</h3>
                 <span class="next"></span>
             </div>
-            <img class="shop__img" src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg" alt="">
+            <img class="shop__img" src="{{ $shop->image }}" alt="">
             <div class="shop__tag">
-                <p class="shop__tag--area">東京都</p>
-                <p class="shop__tag--genre">寿司</p>
+                <p class="shop__tag--area">{{ $shop->area }}</p>
+                <p class="shop__tag--genre">{{ $shop->genre }}</p>
             </div>
             <div class="shop__content">
-                料理長厳選の食材から作る寿司を用いたコースをぜひお楽しみください。食材・味・価格、お客様の満足度を徹底的に追及したお店です。特別な日のお食事、ビジネス接待まで気軽に使用することができます。
+                {{ $shop->content }}
             </div>
         </div>
         <div class="content__right">
             <div class="reservation__form">
-                <form class="form" action="">
+                <form class="form" action="{{ url('/detail/' . $shop->id) }}" method="post">
+                    @csrf
                     <div class="form__name">予約</div>
                     <div class="form__input--group">
-                        <input class="form__input--date" type="date">
-                        <select class="form__input--time" name="" id="">
+                        <input class="form__input--date" type="date" name="date">
+                        <select class="form__input--time" name="time" id="">
                             <option value="" hidden>時間</option>
                             <option value="17:00">17:00</option>
                             <option value="17:30">17:30</option>
@@ -68,7 +69,7 @@
                             <option value="21:30">21:30</option>
                             <option value="22:00">22:00</option>
                         </select>
-                        <select class="form__input--number" name="" id="">
+                        <select class="form__input--number" name="number" id="">
                             <option value="" hidden>人数</option>
                             <option value="1人">1人</option>
                             <option value="2人">2人</option>
@@ -85,19 +86,19 @@
                     <div class="confirmation">
                         <div class="confirmation__group">
                             <p class="confirmation__header">Shop</p>
-                            <p class="confirmation__item">仙人</p>
+                            <p class="confirmation__item">{{ $shop->name }}</p>
                         </div>
                         <div class="confirmation__group">
                             <p class="confirmation__header">Date</p>
-                            <p class="confirmation__item">2021-04-01</p>
+                            <p class="confirmation__item" id="selected_date"></p>
                         </div>
                         <div class="confirmation__group">
                             <p class="confirmation__header">Time</p>
-                            <p class="confirmation__item">17:00</p>
+                            <p class="confirmation__item" id="selected_time"></p>
                         </div>
                         <div class="confirmation__group">
                             <p class="confirmation__header">Number</p>
-                            <p class="confirmation__item">1人</p>
+                            <p class="confirmation__item" id="selected_number"></p>
                         </div>
                     </div>
                     <button class="form__button--submit" type="submit">予約する</button>
@@ -107,3 +108,55 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateSelect = document.querySelector('.form__input--date');
+        const selectedDate = document.getElementById('selected_date');
+        const savedDate = sessionStorage.getItem('selected_date');
+
+        if (savedDate) {
+            selectedDate.textContent = savedDate;
+            dateSelect.value = savedDate;
+        }
+        dateSelect.addEventListener('change', function () {
+            selectedDate.textContent = dateSelect.value;
+            sessionStorage.setItem('selected_date', dateSelect.value);
+        });
+
+        const timeSelect = document.querySelector('.form__input--time');
+        const selectedTime = document.getElementById('selected_time');
+        const savedTime = sessionStorage.getItem('selected_time');
+
+        if (savedTime) {
+            selectedTime.textContent = savedTime;
+            dateSelect.value = savedTime;
+        }
+
+        timeSelect.addEventListener('change', function () {
+            selectedTime.textContent = timeSelect.value;
+            sessionStorage.setItem('selected_time', timeSelect.value);
+        });
+
+        const numberSelect = document.querySelector('.form__input--number');
+        const selectedNumber = document.getElementById('selected_number');
+        const savedNumber = sessionStorage.getItem('selected_number');
+
+        if (savedNumber) {
+            selectedNumber.textContent = savedNumber;
+            dateSelect.value = savedNumber;
+        }
+
+        numberSelect.addEventListener('change', function () {
+            selectedNumber.textContent = numberSelect.value;
+            sessionStorage.setItem('selected_number', numberSelect.value);
+        });
+
+        const submitButton = document.querySelector('.form__button--submit');
+        submitButton.addEventListener('click', function () {
+            sessionStorage.removeItem('selected_date');
+            sessionStorage.removeItem('selected_time');
+            sessionStorage.removeItem('selected_number');
+        });
+        });
+</script>
