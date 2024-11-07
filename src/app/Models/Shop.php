@@ -26,4 +26,26 @@ class Shop extends Model
     {
         return $this->hasMany(Shop::class);
     }
+
+    public function scopeAreaSearch($query, $area)
+    {
+        if (!empty($area)) {
+            $query->where('area', $area);
+
+        }
+    }
+
+    public function scopeGenreSearch($query, $genre)
+    {
+        if (!empty($genre)) {
+            $query->where('genre', $genre);
+        }
+    }
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+    }
 }

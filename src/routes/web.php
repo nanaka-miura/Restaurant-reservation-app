@@ -17,6 +17,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [ShopController::class, 'index']);
+Route::get('/search', [ShopController::class, 'search']);
 Route::get('/detail/{id}', [ShopController::class, 'detail']);
 Route::middleware(['auth'])->group(function() {
     Route::post('/like/{id}', [ShopController::class, 'like']);

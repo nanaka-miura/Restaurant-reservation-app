@@ -18,6 +18,15 @@ class ShopController extends Controller
         return view('shop-list', compact('shops', 'like'));
     }
 
+    public function search(Request $request)
+    {
+        $shops = Shop::AreaSearch($request->area)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
+        $userId = Auth::id();
+        $like = Like::where('user_id', $userId)->pluck('shop_id')->toArray();
+
+        return view('shop-list', compact('shops', 'like'));
+    }
+
     public function like(Request $request, $id)
     {
         $shop = Shop::findOrFail($id);

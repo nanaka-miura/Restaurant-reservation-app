@@ -108,6 +108,13 @@ body {
     text-decoration: none;
 }
 
+.button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-weight: 100;
+}
+
 .header__inner--logo {
     color: #305dff;
     font-size: 35px;
