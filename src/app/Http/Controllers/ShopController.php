@@ -62,7 +62,7 @@ class ShopController extends Controller
         $reservation->number = $request->number;
         $reservation->save();
 
-        return redirect('/');
+        return view('reserve-completed');
     }
 
     public function cancel(Request $request, $id)

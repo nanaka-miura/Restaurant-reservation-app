@@ -123,3 +123,13 @@ body {
     font-family: inherit;
     font-weight: 100;
 }
+
+@media screen and (max-width: 768px) {
+    .header__inner {
+        padding: 50px;
+    }
+
+    .user__name {
+        display: none;
+    }
+}

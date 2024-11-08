@@ -8,6 +8,7 @@
 @section('content')
 <div class="mypage-content">
     <div class="content__left">
+        <h3 class="user__name--mobile">{{ $user->name }}さん</h3>
         <h3 class="reservation__content--header">予約状況</h3>
         @foreach($reservations as $reservation)
         <div class="reservation__detail">

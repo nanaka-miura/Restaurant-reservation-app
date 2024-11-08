@@ -30,3 +30,14 @@
     padding: 10px;
     text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+    .thanks__content {
+        padding: 0 50px;
+    }
+
+    .thanks__message {
+        max-width: 500px;
+        width: 100%;
+    }
+}

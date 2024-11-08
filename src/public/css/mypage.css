@@ -10,6 +10,10 @@
     width: 40%;
 }
 
+.user__name--mobile {
+    display: none;
+}
+
 .reservation__detail {
     background: #305DFF;
     border-radius: 5px;
@@ -23,7 +27,7 @@
     color: #fff;
     display: flex;
     margin-bottom: 20px;
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 .fa-clock {
@@ -37,6 +41,7 @@
     margin-left: auto;
     margin-right: 5px;
 }
+
 .cancel-button {
     background: none;
     border: 1px solid #fff;
@@ -59,8 +64,8 @@
 }
 
 .detail__header {
-    padding-left: 30px;
-    width: 150px;
+    padding-left: 10px;
+    width: 100px;
 }
 
 .detail__header,
@@ -95,7 +100,7 @@
     box-shadow: 3px 3px 5px #818181;
     height: 300px;
     margin-bottom: 15px;
-    width: 300px;
+    width: 45%;
 }
 
 .shop-card__title {
@@ -126,7 +131,7 @@
     background: #fff;
     border-radius: 0 0 5px 5px;
     height: 150px;
-    padding: 15px 20px;
+    padding: 15px 5px 15px 20px;
 }
 
 .shop-card__title {
@@ -141,16 +146,52 @@
 }
 
 .shop-card__item--detail-button {
-
-    text-decoration: none;
     background: #305DFF;
     border-radius: 5px;
     color: #fff;
+    font-size: 14px;
     padding: 5px 10px;
+    text-decoration: none;
 }
 
 .fa-heart {
-    font-size: 30px;
-    height: 30px;
-    width: 30px;
+    font-size: 25px;
+    height: 23px;
+    padding-right: 0px;
+    width: 23px;
+}
+
+@media screen and (max-width: 768px) {
+    .mypage-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 50px;
+        width: 100%;
+    }
+
+    .content__left,
+    .content__right {
+        width: 100%;
+    }
+
+    .reservation__content--header {
+        margin-top: 0px;
+    }
+
+    .user__name--mobile {
+        display: block;
+        margin-top: 0;
+    }
+
+    .likes__shop--group {
+        gap: 10px;
+    }
+
+    .likes__shop--card {
+        width: 100%;
+    }
+
+    .shop-card__bottom {
+        padding: 15px 20px;
+    }
 }
