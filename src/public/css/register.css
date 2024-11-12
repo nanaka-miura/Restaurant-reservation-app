@@ -37,6 +37,16 @@
     width: 80%;
 }
 
+.error-message {
+    color: #FF0000;
+    margin-left: 50px;
+}
+
+.alert-success {
+    color: #FF0000;
+    padding: 0px 40px;
+}
+
 .form__button {
     margin: 0 auto;
     margin-top: 25px;

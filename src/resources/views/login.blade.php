@@ -16,9 +16,19 @@
             <i class="fa-solid fa-envelope" style="color: #4B4B4B;"></i>
             <input class="form__input--email" type="email" name="email" placeholder="Email">
         </div>
+        <div class="error-message">
+            @error('email')
+            {{ $message }}
+            @enderror
+        </div>
         <div class="form__input">
             <i class="fa-solid fa-lock"  style="color: #4B4B4B;"></i>
             <input class="form__input--password" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="error-message">
+            @error('password')
+            {{ $message }}
+            @enderror
         </div>
         <div class="form__button">
             <button class="form__button--submit" type="submit">ログイン</button>

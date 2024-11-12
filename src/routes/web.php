@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use Laravel\Fortify\Http\Controllers\VerifyEmailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,14 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::get('/thanks', function () {
     return view('thanks');
 });
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    ->middleware(['signed'])
+    ->name('verification.verify');
 
 Route::middleware(['auth'])->group(function() {
     Route::post('/like/{id}', [ShopController::class, 'like']);

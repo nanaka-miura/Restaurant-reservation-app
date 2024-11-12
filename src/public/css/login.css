@@ -36,6 +36,11 @@
     width: 80%;
 }
 
+.error-message {
+    color: #ff0000;
+    margin-left: 50px;
+}
+
 .form__button {
     margin: 0 auto;
     margin-top: 25px;

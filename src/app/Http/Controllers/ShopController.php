@@ -15,6 +15,7 @@ class ShopController extends Controller
         $shops = Shop::all();
         $userId = Auth::id();
         $like = Like::where('user_id', $userId)->pluck('shop_id')->toArray();
+
         return view('shop-list', compact('shops', 'like'));
     }
 

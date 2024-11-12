@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ShopsTableSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
+        Storage::disk('public')->makeDirectory('shop');
+
         $shops = [
             [
                 'name' => '仙人',
@@ -156,8 +159,13 @@ class ShopsTableSeeder extends Seeder
                 'content' => '毎日店主自ら市場等に出向き、厳選した魚介類が、お鮨をはじめとした繊細な料理に仕立てられます。また、選りすぐりの種類豊富なドリンクもご用意しております。'
             ],
         ];
+
         foreach ($shops as $shop) {
             DB::table('shops')->insert($shop);
+
+            $imageContent = file_get_contents($shop['image']);
+            $fileName = basename($shop['image']);
+            Storage::disk('public')->put('shop/' . $fileName, $imageContent);
         }
     }
 }
