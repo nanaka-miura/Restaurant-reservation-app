@@ -3,10 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Bus;
-use App\Jobs\SendReminderEmail;
 use App\Models\User;
+use App\Models\Reservation;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationReminderMail;
 
 class SendReminders extends Command
 {
@@ -41,26 +42,14 @@ class SendReminders extends Command
      */
     public function handle()
     {
-        $users = User::whereHas('reservations', function ($query) {
-            $query->whereDate('date', now()->toDateString());
-        })->get();
+        $reservations = Reservation::whereDate('date', Carbon::today()->toDateString())->get();
 
-    $jobs = $users->map(function ($user) {
-        return new SendReminderEmail($user);
-    });
+        foreach ($reservations as $reservation) {
+            $user = $reservation->user;
 
-    $batch = Bus::batch($jobs->toArray())
-            ->then(function ($batch) {
-                // バッチ完了後の処理
-            })
-            ->catch(function ($batch, $e) {
-                // エラーが発生した場合の処理
-            })
-            ->finally(function ($batch) {
-                // 最終的に実行する処理
-            })
-            ->dispatch();
+            Mail::to($user->email)->send(new ReservationReminderMail($reservation));
 
-    $this->info('Reminder emails for reservations have been dispatched!');
+            $this->info("Reminder sent to {$user->email} for reservation on {$reservation->date} at {$reservation->time}");
+        }
     }
 }
