@@ -209,14 +209,14 @@ body {
     width: 40%;
 }
 
-.form__input--date,
-.form__input--time {
-    margin-bottom: 15px;
-}
-
 .form__input--time,
 .form__input--number {
     position: relative;
+}
+
+.error-message {
+    color: #FF0000;
+    margin-bottom: 15px;
 }
 
 .form__input--time::after,
