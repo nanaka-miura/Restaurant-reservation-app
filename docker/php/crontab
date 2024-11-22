@@ -1,0 +1,1 @@
+* * * * * cd /var/www/模擬案件/advance && php artisan schedule:run >> /dev/null 2>&1

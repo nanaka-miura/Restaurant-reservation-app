@@ -284,4 +284,8 @@ body {
     .confirmation {
         margin-bottom: 20%;
     }
+
+    .content__right {
+        margin-bottom: 50px;
+    }
 }
