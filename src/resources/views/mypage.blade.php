@@ -40,6 +40,9 @@
                 <p class="detail__header">QRコード</p>
                 <p class="detail__item qr-cord">{!! QrCode::encoding('UTF-8')->generate('名前: ' . $user->name . ' ' . '予約日: ' . $reservation->date->format('Y-m-d') . ' ' .  '予約時間: ' . $reservation->time->format('H:i') . ' ' . '予約人数: ' . $reservation->number) !!}</p>
             </div>
+            <div class="detail__group">
+                <a class="reservation-change__button" href="{{ url('/mypage/change/' . $reservation->id) }}">予約を変更する</a>
+            </div>
         </div>
         @endforeach
     </div>

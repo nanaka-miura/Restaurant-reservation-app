@@ -79,6 +79,14 @@
     padding: 3px;
 }
 
+.reservation-change__button {
+    color: #fff;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
 .reservation__content--header {
     margin-top: 65px;
 }
