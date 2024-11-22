@@ -6,6 +6,7 @@
     <title>Rese</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/shop-detail.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="detail__content">
@@ -53,6 +54,25 @@
             </div>
             <div class="shop__content">
                 {{ $shop->content }}
+            </div>
+            <div class="shop__rating">
+                <div class="shop__rating--rating">
+                    <i class="fa-solid fa-star" style="color: #000000;"></i><p>お店の評価：</p>
+                    <p>{{ number_format($rating, 1) }}</p>
+                </div>
+                <div class="shop__rating--comment">
+                    <div class="shop__rating--comment--header">
+                        <i class="fa-solid fa-comment" style="color: #000;"></i>
+                        <p>お店の口コミ（最新３件）</p>
+                    </div>
+                    @if ($comments->isEmpty())
+                    <p class="shop__rating--comment--item">まだ口コミはありません</p>
+                    @else
+                    @foreach($comments as $comment)
+                    <p class="shop__rating--comment--item">・{{ $comment->comment }}</p>
+                    @endforeach
+                    @endif
+                </div>
             </div>
         </div>
         <div class="content__right">

@@ -9,6 +9,7 @@ use App\Models\Reservation;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\RatingRequest;
 
 class ShopController extends Controller
 {
@@ -51,8 +52,10 @@ class ShopController extends Controller
         $shop = Shop::findOrFail($id);
         $previous = Shop::where('id', '<', $shop->id)->orderBy('id', 'desc')->first();
         $next = Shop::where('id', '>', $shop->id)->orderBy('id')->first();
+        $rating = Rating::where('shop_id', $shop->id)->avg('rating');
+        $comments = Rating::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('shop-detail', compact('shop', 'previous', 'next'));
+        return view('shop-detail', compact('shop', 'previous', 'next', 'rating', 'comments'));
     }
 
     public function reservation(ReservationRequest $request, $id)
@@ -102,7 +105,7 @@ class ShopController extends Controller
         return view('rating', compact('user', 'reservation'));
     }
 
-    public function ratingStore(Request $request, $id) {
+    public function ratingStore(RatingRequest $request, $id) {
         $user = Auth::user();
         $reservation = Reservation::findOrFail($id);
 
