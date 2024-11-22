@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Like;
 use App\Models\Reservation;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 
@@ -92,5 +93,27 @@ class ShopController extends Controller
         $reservation->save();
 
         return view('change-completed');
+    }
+
+    public function rating($id) {
+        $user = Auth::user();
+        $reservation = Reservation::findOrFail($id);
+
+        return view('rating', compact('user', 'reservation'));
+    }
+
+    public function ratingStore(Request $request, $id) {
+        $user = Auth::user();
+        $reservation = Reservation::findOrFail($id);
+
+        $rating = New Rating();
+        $rating->user_id = $user->id;
+        $rating->shop_id = $reservation->shop_id;
+        $rating->reservation_id = $id;
+        $rating->rating = $request->rating;
+        $rating->comment = $request->comment;
+        $rating->save();
+
+        return redirect('/mypage');
     }
 }
