@@ -47,7 +47,7 @@
                 <textarea class="detail__item--textarea" name="comment" id=""></textarea>
             </div>
             <div class="error-message">
-                @error('rating')
+                @error('comment')
                 {{ $message }}
                 @enderror
             </div>
@@ -57,5 +57,4 @@
         </div>
     </form>
 </div>
-
 @endsection

@@ -172,6 +172,32 @@ body {
     content: "#";
 }
 
+.shop__rating--rating {
+    align-items: center;
+    background: #FFF;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.shop__rating--comment {
+    background: #FFF;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 3px 10px;
+}
+
+.shop__rating--comment--header {
+    align-items: center;
+    display: flex;
+}
+
+.shop__rating--comment--item {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 .content__right {
     margin-top: 50px;
 }
