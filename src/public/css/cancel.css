@@ -1,0 +1,43 @@
+.cancel__content {
+    max-width: 1540px;
+}
+
+.cancel__message {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #818181;
+    margin: 0 auto;
+    text-align: center;
+    width: 500px;
+}
+
+.cancel__message--item {
+    font-size: 20px;
+    padding-top: 90px;
+}
+
+.cancel__message--return-button {
+    padding-bottom: 90px;
+    padding-top: 30px;
+}
+
+.cancel__message--return-button--item {
+    background: #305DFF;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .cancel__content {
+        padding: 0 50px;
+    }
+
+    .cancel__message {
+        max-width: 500px;
+        width: 100%;
+    }
+}

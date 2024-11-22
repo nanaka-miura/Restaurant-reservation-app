@@ -73,6 +73,24 @@ class ShopController extends Controller
 
         $reservation->delete();
 
-        return redirect('/mypage');
+        return view('cancel');
+    }
+
+    public function change($id) {
+        $user = Auth::user();
+        $reservation = Reservation::findOrFail($id);
+
+        return view('reservation-change', compact('user', 'reservation'));
+    }
+
+    public function changeStore(ReservationRequest $request, $id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->number = $request->number;
+        $reservation->save();
+
+        return view('change-completed');
     }
 }

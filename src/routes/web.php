@@ -39,4 +39,6 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/detail/{id}', [ShopController::class, 'reservation']);
     Route::post('/cancel/{id}', [ShopController::class, 'cancel']);
     Route::get('/mypage', [UserController::class, 'mypage']);
+    Route::get('/mypage/change/{id}', [ShopController::class, 'change']);
+    Route::post('/mypage/change/{id}', [ShopController::class, 'changeStore']);
 });
