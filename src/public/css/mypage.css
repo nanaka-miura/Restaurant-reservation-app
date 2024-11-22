@@ -74,6 +74,11 @@
     margin: 0;
 }
 
+.qr-cord {
+    background: #fff;
+    padding: 3px;
+}
+
 .reservation__content--header {
     margin-top: 65px;
 }
