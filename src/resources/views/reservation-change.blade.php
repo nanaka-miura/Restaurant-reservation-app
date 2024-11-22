@@ -22,7 +22,7 @@
                 <p class="detail__header">Date</p>
                 <input class="detail__item" type="date" name="date" value="{{ $reservation->date->format('Y-m-d') }}">
             </div>
-            <div>
+            <div class="error-message">
                 @error('date')
                 {{ $message }}
                 @enderror
@@ -44,7 +44,7 @@
                     <option value="22:00">22:00</option>
                 </select>
             </div>
-            <div>
+            <div class="error-message">
                 @error('time')
                 {{ $message }}
                 @enderror
@@ -65,7 +65,7 @@
                     <option value="10人">10人</option>
                 </select>
             </div>
-            <div>
+            <div class="error-message">
                 @error('number')
                 {{ $message }}
                 @enderror

@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $likes = like::where('user_id', $user->id)->with('shop')->get();
-        $reservations = Reservation::where('user_id', $user->id)->with('shop')->get();
+        $reservations = Reservation::where('user_id', $user->id)->with('shop')->orderBy('date', 'asc')->get();
 
         return view('mypage', compact('likes', 'reservations', 'user'));
     }

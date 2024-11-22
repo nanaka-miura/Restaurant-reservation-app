@@ -11,6 +11,7 @@
         <h3 class="user__name--mobile">{{ $user->name }}さん</h3>
         <h3 class="reservation__content--header">予約状況</h3>
         @foreach($reservations as $reservation)
+        @if(Carbon\Carbon::parse($reservation->date->format('Y-m-d') . ' ' . $reservation->time->format('H:i')) >= now())
         <div class="reservation__detail">
             <div class="detail-title">
                 <i class="fa-solid fa-clock"></i>
@@ -44,6 +45,37 @@
                 <a class="reservation-change__button" href="{{ url('/mypage/change/' . $reservation->id) }}">予約を変更する</a>
             </div>
         </div>
+        @endif
+        @endforeach
+        <h3 class="reservation__content--header">来店済み</h3>
+        @foreach($reservations as $reservation)
+        @if(Carbon\Carbon::parse($reservation->date->format('Y-m-d') . ' ' . $reservation->time->format('H:i')) < now())
+        <div class="reservation__detail">
+            <div class="detail-title">
+                <i class="fa-solid fa-clock"></i>
+                <p>予約{{ $loop->iteration }}</p>
+            </div>
+            <div class="detail__group">
+                <p class="detail__header">Shop</p>
+                <p class="detail__item">{{ $reservation->shop->name }}</p>
+            </div>
+            <div class="detail__group">
+                <p class="detail__header">Date</p>
+                <p class="detail__item">{{ $reservation->date->format('Y-m-d') }}</p>
+            </div>
+            <div class="detail__group">
+                <p class="detail__header">Time</p>
+                <p class="detail__item">{{ $reservation->time->format('H:i') }}</p>
+            </div>
+            <div class="detail__group">
+                <p class="detail__header">Number</p>
+                <p class="detail__item">{{ $reservation->number }}</p>
+            </div>
+            <div class="detail__group">
+                <a class="reservation-change__button" href="{{ url('/mypage/rating/' . $reservation->id) }}">評価する</a>
+            </div>
+        </div>
+        @endif
         @endforeach
     </div>
     <div class="content__right">
