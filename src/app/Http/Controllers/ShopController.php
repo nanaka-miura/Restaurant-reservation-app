@@ -73,6 +73,6 @@ class ShopController extends Controller
 
         $reservation->delete();
 
-        return redirect('/mypage');
+        return view('cancel');
     }
 }
