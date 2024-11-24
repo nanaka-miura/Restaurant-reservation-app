@@ -47,10 +47,10 @@
                 <a class="next" href="{{ url('/detail/' . $next->id) }}">></a>
                 @endif
             </div>
-            <img class="shop__img" src="{{ $shop->image }}" alt="">
+            <img class="shop__img" src="{{ asset('storage/shop/' . basename($shop->image)) }}" alt="">
             <div class="shop__tag">
                 <p class="shop__tag--area">{{ $shop->area }}</p>
-                <p class="shop__tag--genre">{{ $shop->genre }}</p>
+                <p class="shop__tag--genre">{{ $shop->genre->genre }}</p>
             </div>
             <div class="shop__content">
                 {{ $shop->content }}

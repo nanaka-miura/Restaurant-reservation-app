@@ -21,11 +21,11 @@ class ReservationsTableSeeder extends Seeder
         $endDate = strtotime('2024-12-31');
 
         $reservations = [];
-        
-        for ($i = 0; $i < 15; $i++) {
+
+        for ($i = 0; $i < 30; $i++) {
             $randomTimestamp = rand($startDate, $endDate);
             $randomDate = date('Y-m-d', $randomTimestamp);
-            
+
             $reservations[] = [
                 'user_id' => $userIds->random(),
                 'shop_id' => $shopIds->random(),

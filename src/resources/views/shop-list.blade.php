@@ -47,11 +47,9 @@
                     </select>
                     <select class="search-form__input search-form__input--genre" name="genre" id="">
                         <option value="" hidden>All genre</option>
-                        <option value="寿司">寿司</option>
-                        <option value="焼肉">焼肉</option>
-                        <option value="居酒屋">居酒屋</option>
-                        <option value="イタリアン">イタリアン</option>
-                        <option value="ラーメン">ラーメン</option>
+                        @foreach ($genres as $genre)
+                        <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                        @endforeach
                     </select>
                     <i class="fa-solid fa-magnifying-glass" style="color: #F2F2F2;"></i>
                     <input class="search-form__input search-form__input--keyword" name="keyword" type="text" placeholder="Search ...">
@@ -65,13 +63,13 @@
             @foreach($shops as $shop)
                 <div class="shop-card">
                     <div class="shop-card__top">
-                        <img class="shop-card__img" src="{{ $shop->image }}" alt="">
+                        <img class="shop-card__img" src="{{ asset('storage/shop/' . basename($shop->image)) }}" alt="">
                     </div>
                     <div class="shop-card__bottom">
                         <h3 class="shop-card__title">{{ $shop->name }}</h3>
                         <div class="shop-card__tag">
                             <p class="shop-card__tag--area">{{ $shop->area }}</p>
-                            <p class="shop-card__tag--genre">{{ $shop->genre }}</p>
+                            <p class="shop-card__tag--genre">{{ $shop->genre->genre }}</p>
                         </div>
                         <div class="shop-card__item">
                             <a href="{{ url('/detail/' . $shop->id) }}" class="shop-card__item--detail-button">詳しくみる</a>
