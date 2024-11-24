@@ -44,7 +44,7 @@ class AdminController extends Controller
         $shop->area = $request->area;
         $shop->genre_id = $request->genre;
         $shop->content = $request->content;
-        $shop->image = $request->image->store('public/shop/');
+        $shop->image = $request->image->store('public/shop');
         $shop->save();
 
         return redirect('/shop/create')->with('message', '登録が完了しました');
@@ -62,5 +62,26 @@ class AdminController extends Controller
         $adminId = $reservation->shop->admin_id;
     }
         return view('shop-mypage_confirmation', compact('reservations'));
+    }
+
+    public function shopUpdate() {
+        $admin = Auth::user();
+        $shop = Shop::where('admin_id', $admin->id)->first();
+        $genres = Genre::all();
+        return view('shop-mypage_shop-update', compact('genres', 'shop'));
+    }
+
+    public function editShopDetails(Request $request) {
+        $adminId = Auth::id();
+        $shop = Shop::where('admin_id', $adminId)->firstOrFail();
+
+        $shop->name = $request->name;
+        $shop->area = $request->area;
+        $shop->genre_id = $request->genre;
+        $shop->content = $request->content;
+        $shop->image = $request->image->store('public/shop');
+        $shop->save();
+
+        return redirect('/shop/update')->with(['message' => '店舗情報が更新されました']);
     }
 }

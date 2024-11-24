@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rese</title>
-    <link rel="stylesheet" href="{{ asset('css/shop-mypage_shop-create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shop-mypage_shop-update.css') }}">
 </head>
 <body>
     <header class="header">
@@ -25,19 +25,19 @@
     </header>
     <main>
         <div class="content">
-            <form class="form" action="/shop/create" method="post" enctype="multipart/form-data">
+            <form class="form" action="/shop/update" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="form__header">
-                    <p class="form__header--item">店舗情報の作成</p>
+                    <p class="form__header--item">店舗情報の更新</p>
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">店舗名</p>
-                    <input class="form__input--name" type="text" name="name">
+                    <input class="form__input--name" type="text" name="name" value="{{ $shop->name }}">
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">エリア</p>
                     <select class="form__input--genre" name="area" id="">
-                        <option value="" hidden>選択してください</option>
+                        <option value="{{ $shop->area }}" hidden>{{ $shop->area }}</option>
                         @foreach (config('pref') as $key => $score)
                         <option value="{{ $score }}">{{ $score }}</option>
                         @endforeach
@@ -46,7 +46,7 @@
                 <div class="form__input">
                     <p class="form__input--header">ジャンル</p>
                     <select class="form__input--genre" name="genre" id="">
-                        <option value="" hidden>選択してください</option>
+                        <option value="{{ $shop->genre->id }}" hidden>{{ $shop->genre->genre }}</option>
                         @foreach ($genres as $genre)
                         <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
                         @endforeach
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">説明</p>
-                    <textarea class="form__input--content"  name="content" id=""></textarea>
+                    <textarea class="form__input--content"  name="content" id="">{{ $shop->content }}</textarea>
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">店舗画像</p>
@@ -68,7 +68,7 @@
                     @enderror
                     </div>
                 </div>
-                <img id="preview-image" src="" alt="選択した画像のプレビュー" style="display: none;">
+                <img id="preview-image" src="{{ asset('storage/shop/' . basename($shop->image)) }}" alt="選択した画像のプレビュー">
                 <div class="form__button">
                     <button class="form__button--submit" type="submit">登録</button>
                 </div>

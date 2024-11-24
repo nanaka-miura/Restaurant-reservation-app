@@ -58,4 +58,6 @@ Route::middleware(['auth:admin'])->group(function() {
     Route::get('/shop/create', [AdminController::class, 'shopCreate']);
     Route::post('/shop/create', [AdminController::class, 'storeShop']);
     Route::get('/shop/reservation-confirmation', [AdminController::class, 'confirmation']);
+    Route::get('/shop/update', [AdminController::class, 'shopUpdate']);
+    Route::post('/shop/update', [AdminController::class, 'editShopDetails']);
 });
