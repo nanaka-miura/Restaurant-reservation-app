@@ -27,19 +27,21 @@
         <div class="content">
             <table class="table">
                 <tr class="table__row">
-                    <th class="table__header">日付</th>
-                    <th class="table__header">時間</th>
                     <th class="table__header">予約店舗</th>
                     <th class="table__header">名前</th>
+                    <th class="table__header">日付</th>
+                    <th class="table__header">時間</th>
                     <th class="table__header">人数</th>
+                    <th class="table__header">コース</th>
                 </tr>
                 @foreach ($reservations as $reservation)
                 <tr class="table__row">
-                    <td class="table__item">{{ $reservation->date->format('Y-m-d') }}</td>
-                    <td class="table__item">{{ $reservation->time->format('H:i') }}</td>
                     <td class="table__item">{{ $reservation->shop->name }}</td>
                     <td class="table__item">{{ $reservation->user->name }}</td>
+                    <td class="table__item">{{ $reservation->date->format('Y-m-d') }}</td>
+                    <td class="table__item">{{ $reservation->time->format('H:i') }}</td>
                     <td class="table__item">{{ $reservation->number }}</td>
+                    <td class="table__item">{{ $reservation->menu->menu }}</td>
                 </tr>
                 @endforeach
             </table>

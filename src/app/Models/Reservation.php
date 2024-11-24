@@ -27,6 +27,11 @@ class Reservation extends Model
         return $this->belongsTo(Shop::class);
     }
 
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
     protected $casts = [
         'date' => 'date',
         'time' => 'datetime',

@@ -26,7 +26,8 @@ class ReservationRequest extends FormRequest
         return [
             'date' => 'required|after:today',
             'time' => 'required',
-            'number' => 'required'
+            'number' => 'required',
+            'menu_id' => 'required'
         ];
     }
 
@@ -36,7 +37,8 @@ class ReservationRequest extends FormRequest
             'date.required' => '日付を選択してください',
             'date.after' => '明日以降の日付を選択してください',
             'time.required' => '時間を選択してください',
-            'number.required' => '人数を選択してください'
+            'number.required' => '人数を選択してください',
+            'menu_id.required' => 'コースを選択してください'
         ];
     }
 }
