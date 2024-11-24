@@ -225,7 +225,8 @@ body {
 
 .form__input--date,
 .form__input--time,
-.form__input--number {
+.form__input--number,
+.form__input--menu {
     border: 0.5px solid #0438FF;
     border-radius: 3px;
     outline: none;

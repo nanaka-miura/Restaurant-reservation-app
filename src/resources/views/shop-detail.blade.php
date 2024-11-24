@@ -124,6 +124,17 @@
                             {{ $message }}
                             @enderror
                         </div>
+                        <select class="form__input--menu" name="menu_id" id="">
+                            <option value="" hidden>コース</option>
+                            @foreach($menus as $menu)
+                            <option value="{{ $menu->id }}">{{ $menu->menu }}</option>
+                            @endforeach
+                        </select>
+                        <div class="error-message">
+                            @error ('menu_id')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                     <div class="confirmation">
                         <div class="confirmation__group">
@@ -141,6 +152,10 @@
                         <div class="confirmation__group">
                             <p class="confirmation__header">Number</p>
                             <p class="confirmation__item" id="selected_number"></p>
+                        </div>
+                        <div class="confirmation__group">
+                            <p class="confirmation__header">Course</p>
+                            <p class="confirmation__item" id="selected_course"></p>
                         </div>
                     </div>
                     <button class="form__button--submit" type="submit">予約する</button>
@@ -172,7 +187,7 @@
 
         if (savedTime) {
             selectedTime.textContent = savedTime;
-            dateSelect.value = savedTime;
+            timeSelect.value = savedTime;
         }
 
         timeSelect.addEventListener('change', function () {
@@ -186,7 +201,7 @@
 
         if (savedNumber) {
             selectedNumber.textContent = savedNumber;
-            dateSelect.value = savedNumber;
+            numberSelect.value = savedNumber;
         }
 
         numberSelect.addEventListener('change', function () {
@@ -194,11 +209,32 @@
             sessionStorage.setItem('selected_number', numberSelect.value);
         });
 
+        const courseSelect = document.querySelector('.form__input--menu');
+        const selectedCourse = document.getElementById('selected_course');
+        const savedCourse = sessionStorage.getItem('selected_course');
+
+        if (savedCourse) {
+            const selectedMenuOption = [...courseSelect.options].find(option => option.value == savedCourse);
+            if (selectedMenuOption) {
+                selectedCourse.textContent = selectedMenuOption.textContent;
+            }
+            courseSelect.value = savedCourse;
+        }
+
+        courseSelect.addEventListener('change', function () {
+            const selectedMenuOption = [...courseSelect.options].find(option => option.value == courseSelect.value);
+            if (selectedMenuOption) {
+                selectedCourse.textContent = selectedMenuOption.textContent;
+            }
+            sessionStorage.setItem('selected_course', courseSelect.value);
+        });
+
         const submitButton = document.querySelector('.form__button--submit');
         submitButton.addEventListener('click', function () {
             sessionStorage.removeItem('selected_date');
             sessionStorage.removeItem('selected_time');
             sessionStorage.removeItem('selected_number');
+            sessionStorage.removeItem('selected_course');
         });
         });
 </script>

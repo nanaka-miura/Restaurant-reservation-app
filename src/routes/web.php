@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/mypage/change/{id}', [ShopController::class, 'changeStore']);
     Route::get('/mypage/rating/{id}', [ShopController::class, 'rating']);
     Route::post('/mypage/rating/{id}', [ShopController::class, 'ratingStore']);
-
+    Route::get('/reserve/thanks', [ShopController::class, 'thanks']);
 });
 
 Route::middleware(['auth:admin'])->group(function() {

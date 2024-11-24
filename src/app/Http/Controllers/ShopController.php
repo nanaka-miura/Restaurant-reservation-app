@@ -8,9 +8,13 @@ use App\Models\Like;
 use App\Models\Reservation;
 use App\Models\Rating;
 use App\Models\Genre;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\RatingRequest;
+use Stripe\Charge;
+use Stripe\Stripe;
+use Stripe\Checkout\Session as StripeSession;
 
 class ShopController extends Controller
 {
@@ -55,10 +59,11 @@ class ShopController extends Controller
         $shop = Shop::findOrFail($id);
         $previous = Shop::where('id', '<', $shop->id)->orderBy('id', 'desc')->first();
         $next = Shop::where('id', '>', $shop->id)->orderBy('id')->first();
+        $menus = Menu::where('shop_id', $shop->id)->get();
         $rating = Rating::where('shop_id', $shop->id)->avg('rating');
         $comments = Rating::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('shop-detail', compact('shop', 'previous', 'next', 'rating', 'comments'));
+        return view('shop-detail', compact('shop', 'previous', 'next', 'menus', 'rating', 'comments'));
     }
 
     public function reservation(ReservationRequest $request, $id)
@@ -69,9 +74,34 @@ class ShopController extends Controller
         $reservation->date = $request->date;
         $reservation->time = $request->time;
         $reservation->number = $request->number;
+        $reservation->menu_id = $request->menu_id;
         $reservation->save();
 
-        return view('reserve-completed');
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+
+        $menu = Menu::find($request->menu_id);
+        $price = $menu->price;
+        $numberOfPeople = intval($request->number);
+        $totalPrice = $price * $numberOfPeople;
+
+        $session = StripeSession::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $menu->menu,
+                    ],
+                    'unit_amount' => $totalPrice * 1
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => env('APP_URL') . '/reserve/thanks',
+            'cancel_url' => env('APP_URL') . '/'
+        ]);
+
+        return redirect($session->url);
     }
 
     public function cancel(Request $request, $id)
@@ -121,5 +151,9 @@ class ShopController extends Controller
         $rating->save();
 
         return redirect('/mypage');
+    }
+
+    public function thanks() {
+        return view('reserve-completed');
     }
 }

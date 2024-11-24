@@ -15,12 +15,18 @@ class Shop extends Model
         'image',
         'area',
         'genre_id',
+        'menu_id',
         'content'
     ];
 
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
     }
 
     public function genre()
