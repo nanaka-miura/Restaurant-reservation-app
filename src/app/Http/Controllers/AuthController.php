@@ -30,11 +30,11 @@ class AuthController extends Controller
         $user = User::where('email', $credentials['email'])->first();
 
         if ($user && !$user->hasVerifiedEmail()) {
-            $user->sendEmailVerificationNotification();
-            return redirect()->back()->withErrors([
-                'email' => "メール認証が必要です。認証メールを再送しました。"
-            ]);
-        }
+                $user->sendEmailVerificationNotification();
+                return redirect()->back()->withErrors([
+                    'email' => "メール認証が必要です。認証メールを再送しました。"
+                ]);
+            }
 
         if (Auth::attempt($credentials)) {
             return redirect('/');
@@ -43,5 +43,48 @@ class AuthController extends Controller
         return redirect()->back()->withErrors([
             'email' => "ログイン情報が登録されていません"
         ]);
+    }
+
+    public function adminLogin() {
+        return view('admin-login');
+    }
+
+    public function shopLogin() {
+        return view('shop-login');
+    }
+
+    public function adminDoLogin(LoginRequest $request) {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $admin = Auth::guard('admin')->user();
+
+            if ($admin->admin_status) {
+                return redirect('/admin/mypage');
+            } else {
+                Auth::guard('admin')->logout();
+                return redirect('/admin/login')->withErrors(['error' => '管理者権限がありません']);
+            }
+        }
+
+        return redirect('/admin/login')->withErrors(['error' => 'ログイン情報が正しくありません']);
+
+    }
+
+    public function shopDoLogin(LoginRequest $request) {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $admin = Auth::guard('admin')->user();
+
+            if ($admin->shop_admin_status) {
+                return redirect('/shop/mypage');
+            } else {
+                Auth::guard('admin')->logout();
+                return redirect('/shop/login')->withErrors(['error' => '管理者権限がありません']);
+            }
+        }
+
+        return redirect('/shop/login')->withErrors(['error' => 'ログイン情報が正しくありません']);
     }
 }

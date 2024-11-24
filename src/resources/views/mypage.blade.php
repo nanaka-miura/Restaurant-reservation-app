@@ -114,4 +114,7 @@
         </div>
     </div>
 </div>
+<div id="reader" style="width:500px;"></div>
+
+
 @endsection

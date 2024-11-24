@@ -20,6 +20,7 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('number');
+            $table->boolean('visited')->default(false);
             $table->timestamps();
         });
     }

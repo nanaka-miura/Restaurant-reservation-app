@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Models\Like;
 use App\Models\Reservation;
 use App\Models\Rating;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\RatingRequest;
@@ -15,11 +16,12 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $shops = Shop::all();
+        $shops = Shop::with('genre')->get();
         $userId = Auth::id();
+        $genres = Genre::all();
         $like = Like::where('user_id', $userId)->pluck('shop_id')->toArray();
 
-        return view('shop-list', compact('shops', 'like'));
+        return view('shop-list', compact('shops', 'like', 'genres'));
     }
 
     public function search(Request $request)
@@ -27,8 +29,9 @@ class ShopController extends Controller
         $shops = Shop::AreaSearch($request->area)->GenreSearch($request->genre)->KeywordSearch($request->keyword)->get();
         $userId = Auth::id();
         $like = Like::where('user_id', $userId)->pluck('shop_id')->toArray();
+        $genres = Genre::all();
 
-        return view('shop-list', compact('shops', 'like'));
+        return view('shop-list', compact('shops', 'like', 'genres'));
     }
 
     public function like(Request $request, $id)

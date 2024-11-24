@@ -159,6 +159,8 @@ body {
 }
 
 .shop__img {
+    height: 400px;
+    object-fit: cover;
     width: 100%;
 }
 
@@ -263,7 +265,7 @@ body {
     border-radius: 5px;
     margin: 20px;
     padding: 10px 15px;
-    margin-bottom: 50%;
+    margin-bottom: 80%;
 }
 
 .confirmation__group {

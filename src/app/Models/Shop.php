@@ -10,16 +10,27 @@ class Shop extends Model
     use HasFactory;
 
     protected $fillable = [
+        'admin_id',
         'name',
         'image',
         'area',
-        'genre',
+        'genre_id',
         'content'
     ];
 
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 
     public function shops()
@@ -38,7 +49,7 @@ class Shop extends Model
     public function scopeGenreSearch($query, $genre)
     {
         if (!empty($genre)) {
-            $query->where('genre', $genre);
+            $query->where('genre_id', $genre);
         }
     }
 

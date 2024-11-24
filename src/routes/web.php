@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
 
@@ -26,6 +27,10 @@ Route::get('/thanks', function () {
     return view('thanks');
 });
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/admin/login', [AuthController::class, 'adminLogin']);
+Route::get('/shop/login', [AuthController::class, 'shopLogin']);
+Route::post('/admin/login', [AuthController::class, 'adminDoLogin']);
+Route::post('/shop/login', [AuthController::class, 'shopDoLogin']);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -43,4 +48,14 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/mypage/change/{id}', [ShopController::class, 'changeStore']);
     Route::get('/mypage/rating/{id}', [ShopController::class, 'rating']);
     Route::post('/mypage/rating/{id}', [ShopController::class, 'ratingStore']);
+
+});
+
+Route::middleware(['auth:admin'])->group(function() {
+    Route::get('/admin/mypage', [AdminController::class, 'adminMypage']);
+    Route::post('/admin/mypage', [AdminController::class, 'representativeRegister']);
+    Route::get('/shop/mypage', [AdminController::class, 'shopMypage']);
+    Route::get('/shop/create', [AdminController::class, 'shopCreate']);
+    Route::post('/shop/create', [AdminController::class, 'storeShop']);
+    Route::get('/shop/reservation-confirmation', [AdminController::class, 'confirmation']);
 });

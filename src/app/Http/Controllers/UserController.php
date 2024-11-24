@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Like;
+use App\Actions\Fortify\CreateNewUser;
+
 
 class UserController extends Controller
 {

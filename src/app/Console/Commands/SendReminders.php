@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationReminderMail;
+use Illuminate\Support\Facades\Log;
 
 class SendReminders extends Command
 {
@@ -47,9 +48,18 @@ class SendReminders extends Command
         foreach ($reservations as $reservation) {
             $user = $reservation->user;
 
-            Mail::to($user->email)->send(new ReservationReminderMail($reservation));
+            try {
+                Mail::to($user->email)->send(new ReservationReminderMail($reservation));
 
-            $this->info("Reminder sent to {$user->email} for reservation on {$reservation->date} at {$reservation->time}");
+                Log::info("Reminder sent to {$user->email} for reservation on {$reservation->date} at {$reservation->time}");
+                $this->info("Reminder sent to {$user->email} for reservation on {$reservation->date} at {$reservation->time}");
+            } catch (\Exception $e) {
+                Log::error("Failed to send reminder to {$user->email}: {$e->getMessage()}");
+                $this->error("Failed to send reminder to {$user->email}: {$e->getMessage()}");
+            }
+        }
+
+        return Command::SUCCESS;
         }
     }
-}
+
