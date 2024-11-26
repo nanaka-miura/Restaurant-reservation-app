@@ -1,4 +1,6 @@
 # 飲食店予約アプリ（Rese）  
+<img width="1223" alt="Rese_top" src="https://github.com/user-attachments/assets/c5186de2-a32c-4e3c-8ae7-61c40ba7ee5f">
+
 ## 環境構築
 Dockerビルド  
 1.git clone git@github.com:nanaka-miura/Restaurant-reservation-app.git  
@@ -42,7 +44,6 @@ Lavaral環境構築
 
 ## ER図
 ![er](https://github.com/user-attachments/assets/f2209625-4d9b-40a6-91b1-310d55e9fb29)  
-
 
 ### URL
 ・開発環境：http://localhost/  
