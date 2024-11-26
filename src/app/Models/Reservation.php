@@ -12,9 +12,10 @@ class Reservation extends Model
     protected $fillable = [
         'user_id',
         'shop_id',
+        'menu_id',
         'date',
         'time',
-        'number_of_people'
+        'number'
     ];
 
     public function user()

@@ -92,7 +92,7 @@
                         <h3 class="shop-card__title">{{ $like->shop->name }}</h3>
                         <div class="shop-card__tag">
                             <p class="shop-card__tag--area">{{ $like->shop->area }}</p>
-                            <p class="shop-card__tag--genre">{{ $like->shop->genre }}</p>
+                            <p class="shop-card__tag--genre">{{ $like->shop->genre->genre }}</p>
                         </div>
                         <div class="shop-card__item">
                             <a href="{{ url('/detail/' . $like->shop_id) }}" class="shop-card__item--detail-button">詳しくみる</a>

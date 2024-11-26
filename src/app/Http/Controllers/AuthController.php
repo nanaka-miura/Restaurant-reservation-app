@@ -29,21 +29,21 @@ class AuthController extends Controller
 
         $user = User::where('email', $credentials['email'])->first();
 
-        if ($user && !$user->hasVerifiedEmail()) {
+        if ($user && Auth::attempt($credentials)) {
+            if (!$user->hasVerifiedEmail()) {
+                Auth::logout();
                 $user->sendEmailVerificationNotification();
                 return redirect()->back()->withErrors([
                     'email' => "メール認証が必要です。認証メールを再送しました。"
                 ]);
             }
-
-        if (Auth::attempt($credentials)) {
             return redirect('/');
         }
-
         return redirect()->back()->withErrors([
             'email' => "ログイン情報が登録されていません"
         ]);
-    }
+        }
+
 
     public function adminLogin() {
         return view('admin-login');
