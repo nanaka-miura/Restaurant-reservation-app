@@ -1,8 +1,5 @@
 # 飲食店予約アプリ（Rese）  
-<img width="1223" alt="Rese_top" src="https://github.com/user-attachments/assets/c5186de2-a32c-4e3c-8ae7-61c40ba7ee5f">
-
-## アプリケーションURL  
-http://35.78.105.117/  
+<img width="1223" alt="Rese_top" src="https://github.com/user-attachments/assets/c5186de2-a32c-4e3c-8ae7-61c40ba7ee5f">  
 
 ## 機能一覧  
 ・会員登録機能  
