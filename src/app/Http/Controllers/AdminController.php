@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Menu;
-use App\Http\Requests\Shoprequest;
+use App\Http\Requests\ShopRequest;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
