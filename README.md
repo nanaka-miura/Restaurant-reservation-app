@@ -48,8 +48,9 @@ Lavaral環境構築
 1.docker-compose exec php bash  
 2.composer install  
 3.composer require stripe/stripe-php  
-4.cp .env.example .env  
-5..envファイルの変更  
+4.composer require league/flysystem-aws-s3-v3  
+5.cp .env.example .env  
+6..envファイルの変更  
 　(1)DB_HOSTをmysqlに変更  
 　(2)DB_DATABASEをlaravel_dbに変更  
 　(3)DB_USERNAMEをlaravel_userに変更  
@@ -57,10 +58,10 @@ Lavaral環境構築
 　(5)MAIL_FROM_ADDRESSに送信元アドレスを設定  
 　(6)STRIPE_PUBLIC_KEY=を設定  
 　(7)STRIPE_SECRET_KEY=を設定  
-6.php artisan key:generate  
-7.php artisan migrate  
-8.php artisan db:seed  
-9.php artisan test  
+7.php artisan key:generate  
+8.php artisan migrate  
+9.php artisan db:seed  
+10.php artisan test  
 
 ### ログイン情報  
 一般ユーザー  
