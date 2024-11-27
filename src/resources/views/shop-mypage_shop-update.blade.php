@@ -68,7 +68,7 @@
                     @enderror
                     </div>
                 </div>
-                <img id="preview-image" src="{{ asset('storage/shop/' . basename($shop->image)) }}" alt="選択した画像のプレビュー">
+                <img id="preview-image" src="{{ $shop->image }}" alt="選択した画像のプレビュー">
                 <div class="form__button">
                     <button class="form__button--submit" type="submit">登録</button>
                 </div>

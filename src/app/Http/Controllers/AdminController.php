@@ -10,6 +10,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -44,7 +45,11 @@ class AdminController extends Controller
         $shop->area = $request->area;
         $shop->genre_id = $request->genre;
         $shop->content = $request->content;
-        $shop->image = $request->image->store('public/shop');
+
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('shop', $image);
+        $shop->image = Storage::disk('s3')->url($path);
+
         $shop->save();
 
         return redirect('/shop/create')->with('message', '登録が完了しました');
@@ -79,7 +84,11 @@ class AdminController extends Controller
         $shop->area = $request->area;
         $shop->genre_id = $request->genre;
         $shop->content = $request->content;
-        $shop->image = $request->image->store('public/shop');
+
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('shop', $image);
+        $shop->image = Storage::disk('s3')->url($path);
+
         $shop->save();
 
         return redirect('/shop/update')->with(['message' => '店舗情報が更新されました']);

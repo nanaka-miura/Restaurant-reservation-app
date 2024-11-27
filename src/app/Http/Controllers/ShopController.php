@@ -15,6 +15,7 @@ use App\Http\Requests\RatingRequest;
 use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -24,6 +25,9 @@ class ShopController extends Controller
         $userId = Auth::id();
         $genres = Genre::all();
         $like = Like::where('user_id', $userId)->pluck('shop_id')->toArray();
+        foreach ($shops as $shop) {
+            $shop->image_url = Storage::disk('s3')->url($shop->image);
+        }
 
         return view('shop-list', compact('shops', 'like', 'genres'));
     }
