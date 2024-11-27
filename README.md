@@ -58,6 +58,11 @@ Lavaral環境構築
 　(5)MAIL_FROM_ADDRESSに送信元アドレスを設定  
 　(6)STRIPE_PUBLIC_KEY=を設定  
 　(7)STRIPE_SECRET_KEY=を設定  
+　(8)AWS_ACCESS_KEY_ID=を設定  
+　(9)AWS_SECRET_ACCESS_KEY=を設定  
+　(10)AWS_DEFAULT_REGION=を設定  
+　(11)AWS_BUCKET=を設定  
+　(12)AWS_USE_PATH_STYLE_ENDPOINT=を設定  
 7.php artisan key:generate  
 8.php artisan migrate  
 9.php artisan db:seed  
