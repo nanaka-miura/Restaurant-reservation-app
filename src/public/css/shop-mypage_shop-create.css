@@ -158,7 +158,9 @@ body {
 .form__input--name,
 .form__input--genre,
 .form__input--content,
-.form__input--file {
+.form__input--file,
+.form__input--menu,
+.form__input--price {
     border: none;
     border-bottom: 1px solid #d7d7d7;
     color: #5e5e5e;
@@ -191,7 +193,7 @@ body {
 
 .error-message {
     color: #FF0000;
-    margin-left: 50px;
+    margin-left: 25%;
 }
 
 .alert-success {

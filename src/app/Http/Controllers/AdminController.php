@@ -10,6 +10,8 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Admin;
+use App\Models\Menu;
+use App\Http\Requests\Shoprequest;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -38,19 +40,23 @@ class AdminController extends Controller
         return view('shop-mypage_shop-create', compact('genres'));
     }
 
-    public function storeShop(Request $request) {
+    public function storeShop(ShopRequest $request) {
         $shop = New Shop();
         $shop->admin_id = Auth::id();
         $shop->name = $request->name;
         $shop->area = $request->area;
         $shop->genre_id = $request->genre;
         $shop->content = $request->content;
-
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('shop', $image);
         $shop->image = Storage::disk('s3')->url($path);
-
         $shop->save();
+
+        $menu = New Menu();
+        $menu->shop_id = $shop->id;
+        $menu->menu = $request->menu;
+        $menu->price = $request->price;
+        $menu->save();
 
         return redirect('/shop/create')->with('message', '登録が完了しました');
     }
@@ -63,9 +69,9 @@ class AdminController extends Controller
             $query->where('admin_id', $adminId);
         })->where('date', '>=', $today)->orderBy('date', 'asc')->get();
 
-    foreach ($reservations as $reservation) {
-        $adminId = $reservation->shop->admin_id;
-    }
+        foreach ($reservations as $reservation) {
+            $adminId = $reservation->shop->admin_id;
+        }
         return view('shop-mypage_confirmation', compact('reservations'));
     }
 
@@ -76,7 +82,7 @@ class AdminController extends Controller
         return view('shop-mypage_shop-update', compact('genres', 'shop'));
     }
 
-    public function editShopDetails(Request $request) {
+    public function editShopDetails(ShopRequest $request) {
         $adminId = Auth::id();
         $shop = Shop::where('admin_id', $adminId)->firstOrFail();
 

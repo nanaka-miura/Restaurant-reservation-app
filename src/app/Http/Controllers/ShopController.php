@@ -120,8 +120,11 @@ class ShopController extends Controller
     public function change($id) {
         $user = Auth::user();
         $reservation = Reservation::findOrFail($id);
+        $shop = Shop::where('id', $reservation->shop->id)->first();
 
-        return view('reservation-change', compact('user', 'reservation'));
+        $menus = Menu::where('shop_id', $shop->id)->get();
+
+        return view('reservation-change', compact('user', 'reservation', 'menus'));
     }
 
     public function changeStore(ReservationRequest $request, $id)

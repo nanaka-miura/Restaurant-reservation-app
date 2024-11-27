@@ -34,6 +34,11 @@
                     <p class="form__input--header">店舗名</p>
                     <input class="form__input--name" type="text" name="name" value="{{ $shop->name }}">
                 </div>
+                <div class="error-message">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </div>
                 <div class="form__input">
                     <p class="form__input--header">エリア</p>
                     <select class="form__input--genre" name="area" id="">
@@ -42,6 +47,11 @@
                         <option value="{{ $score }}">{{ $score }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="error-message">
+                    @error('area')
+                    {{ $message }}
+                    @enderror
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">ジャンル</p>
@@ -52,20 +62,25 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="error-message">
+                    @error('genre')
+                    {{ $message }}
+                    @enderror
+                </div>
                 <div class="form__input">
                     <p class="form__input--header">説明</p>
                     <textarea class="form__input--content"  name="content" id="">{{ $shop->content }}</textarea>
+                </div>
+                <div class="error-message">
+                    @error('content')
+                    {{ $message }}
+                    @enderror
                 </div>
                 <div class="form__input">
                     <p class="form__input--header">店舗画像</p>
                     <div class="form__input--file">
                         <label class="form__input--file--label" for="file-upload">画像を選択する</label>
                         <input id="file-upload" class="form__file--item" type="file" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-                    </div>
-                    <div class="form__error">
-                    @error('image')
-                        {{ $message }}
-                    @enderror
                     </div>
                 </div>
                 <img id="preview-image" src="{{ $shop->image }}" alt="選択した画像のプレビュー">

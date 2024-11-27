@@ -71,6 +71,19 @@
                 @enderror
             </div>
             <div class="detail__group">
+                <p class="detail__header">Menu</p>
+                <select class="detail__item" name="menu_id" id="">
+                    @foreach($menus as $menu)
+                    <option value="{{ $menu->id }}">{{ $menu->menu }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="error-message">
+                @error ('menu_id')
+                {{ $message }}
+                @enderror
+            </div>
+            <div class="detail__group">
                 <button class="reservation-change__button" type="submit">変更する</button>
             </div>
         </div>
