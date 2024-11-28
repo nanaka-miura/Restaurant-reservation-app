@@ -166,7 +166,7 @@ body {
 .shop-card__group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 10px;
 }
 
 .shop-card {
