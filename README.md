@@ -27,12 +27,10 @@
 ・MailHog latest  
 
 ## テーブル設計  
-<img width="644" alt="Rese_table2" src="https://github.com/user-attachments/assets/9ee489de-c43b-4ed6-90f6-a59a44b6543b">  
-<img width="644" alt="Rese_table3" src="https://github.com/user-attachments/assets/16263be6-4e26-4cc3-8a70-c46837159468">  
-<img width="644" alt="Rese_table4" src="https://github.com/user-attachments/assets/a5a81bee-27ea-429b-8036-8df76ae0acec">  
-<img width="648" alt="スクリーンショット 2024-12-06 9 26 25" src="https://github.com/user-attachments/assets/6a50aed2-6eab-4929-8ecd-51b123076389">
-
-
+![ReseTable_1](https://github.com/user-attachments/assets/5bf4d07f-3fcc-45c4-a6bf-51ea1c29fee3)  
+![ReseTable_2](https://github.com/user-attachments/assets/dad86e3f-d36a-4a00-adc3-aed873d85c8c)  
+![ReseTable_3](https://github.com/user-attachments/assets/3644e570-eacd-4408-b2b3-e0eafe039fcc)  
+![ReseTable_4](https://github.com/user-attachments/assets/85ef808e-18fb-4343-8026-530289265ebb)  
 
 ## ER図
 ![er](https://github.com/user-attachments/assets/f2209625-4d9b-40a6-91b1-310d55e9fb29)  
