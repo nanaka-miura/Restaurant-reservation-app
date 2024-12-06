@@ -64,18 +64,19 @@ Lavaral環境構築
 7.php artisan key:generate  
 8.php artisan migrate  
 9.php artisan db:seed  
-10.php artisan test  
+10.php artisan schedule:run  
+11.php artisan test  
 
 ### ログイン情報  
 一般ユーザー  
 　id：user1@example.com  
 　pass：password  
 店舗代表者  
-　ログインURL：/shop/login  
+　ログインURL：http://localhost/shop/login  
 　id：shop-admin1@example.com  
 　pass：password  
 管理者  
-　ログインURL：/admin/login
+　ログインURL：http://localhost/admin/login
 　id：amdin1@example.com  
 　pass：password  
 
