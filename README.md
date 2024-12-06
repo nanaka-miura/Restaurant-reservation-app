@@ -27,10 +27,11 @@
 ・MailHog latest  
 
 ## テーブル設計  
-<img width="656" alt="Rese_table1" src="https://github.com/user-attachments/assets/7ff92f48-a185-4278-9cfa-45bdb4e0a6aa">  
 <img width="644" alt="Rese_table2" src="https://github.com/user-attachments/assets/9ee489de-c43b-4ed6-90f6-a59a44b6543b">  
 <img width="644" alt="Rese_table3" src="https://github.com/user-attachments/assets/16263be6-4e26-4cc3-8a70-c46837159468">  
 <img width="644" alt="Rese_table4" src="https://github.com/user-attachments/assets/a5a81bee-27ea-429b-8036-8df76ae0acec">  
+<img width="648" alt="スクリーンショット 2024-12-06 9 26 25" src="https://github.com/user-attachments/assets/6a50aed2-6eab-4929-8ecd-51b123076389">
+
 
 
 ## ER図
@@ -70,9 +71,11 @@ Lavaral環境構築
 　id：user1@example.com  
 　pass：password  
 店舗代表者  
+　ログインURL：/shop/login  
 　id：shop-admin1@example.com  
 　pass：password  
 管理者  
+　ログインURL：/admin/login
 　id：amdin1@example.com  
 　pass：password  
 
