@@ -33,7 +33,7 @@
 ![ReseTable_4](https://github.com/user-attachments/assets/124148ca-2675-42ad-8eec-ceec0d80977c)  
 
 ## ER図
-![er](https://github.com/user-attachments/assets/f2209625-4d9b-40a6-91b1-310d55e9fb29)  
+![er](https://github.com/user-attachments/assets/2f1a3f58-b779-470b-ad4e-4196a1ddf580)  
 
 ## 環境構築
 Dockerビルド  
