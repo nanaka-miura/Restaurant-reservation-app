@@ -1,5 +1,5 @@
 # 飲食店予約アプリ（Rese）  
-<img width="1223" alt="Rese_top" src="https://github.com/user-attachments/assets/c5186de2-a32c-4e3c-8ae7-61c40ba7ee5f">  
+![ReseTop](https://github.com/user-attachments/assets/52cc9aa1-63fa-436c-94b4-2e3fc768b97f)  
 
 ## 機能一覧  
 ・会員登録機能  
@@ -27,10 +27,10 @@
 ・MailHog latest  
 
 ## テーブル設計  
-![ReseTable_1](https://github.com/user-attachments/assets/5bf4d07f-3fcc-45c4-a6bf-51ea1c29fee3)  
-![ReseTable_2](https://github.com/user-attachments/assets/dad86e3f-d36a-4a00-adc3-aed873d85c8c)  
-![ReseTable_3](https://github.com/user-attachments/assets/3644e570-eacd-4408-b2b3-e0eafe039fcc)  
-![ReseTable_4](https://github.com/user-attachments/assets/85ef808e-18fb-4343-8026-530289265ebb)  
+![ReseTable_1](https://github.com/user-attachments/assets/e320bd45-f28e-4709-83df-6a13389b33e0)  
+![ReseTable_2](https://github.com/user-attachments/assets/c60a2d2a-4478-49bf-9d1f-2845db003949)  
+![ReseTable_3](https://github.com/user-attachments/assets/5e030b99-24f3-4031-a36d-94fc445b0e2a)  
+![ReseTable_4](https://github.com/user-attachments/assets/124148ca-2675-42ad-8eec-ceec0d80977c)  
 
 ## ER図
 ![er](https://github.com/user-attachments/assets/f2209625-4d9b-40a6-91b1-310d55e9fb29)  
