@@ -76,7 +76,7 @@ Lavaral環境構築
 　id：shop-admin1@example.com  
 　pass：password  
 管理者  
-　ログインURL：http://localhost/admin/login
+　ログインURL：http://localhost/admin/login  
 　id：amdin1@example.com  
 　pass：password  
 
